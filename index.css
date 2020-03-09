@@ -1,0 +1,69 @@
+*{
+    box-sizing: border-box;
+}
+html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.6;
+  }
+body{
+    background-color: #f6f6f6;
+    font-family: 'Ubuntu', sans-serif !important;
+    color:#666666 !important;
+    transition: all 0.3s ease;
+}
+h1,h2,h3,h4,h5,h6{
+    color: #444444;
+}
+.fas{
+    margin-left: 5px;
+}
+.flex{
+    display: flex;
+}
+.space-between{
+    justify-content: space-between;
+}
+#navbar {
+    background-color: #39424e !important;
+    color: #fff;
+}
+.green-text{
+    color:#29ae57;
+}
+.search-input{
+    width: 100%;
+    height: 40px;
+}
+.card{
+    margin: 1rem !important;
+    color: #555;
+    background: white;
+    box-shadow: 2px 4px 25px rgba(0, 0, 0, .1);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all .2s linear;
+
+}
+.card-body{
+    min-height: 6rem;
+}
+.card:hover {
+    box-shadow: 2px 8px 45px rgba(0, 0, 0, .15);
+    transform: translate3D(0, -2px, 0);
+}
+.muted{
+    font-size: 12px;
+    color: #666666c4;
+
+}
+.btn.focus, .btn:focus {
+    outline: 0;
+    box-shadow: none !important;
+}
+.visibility-hidden{
+    visibility: hidden;
+}
+.navbar-brand{
+    color: #fff !important;
+}

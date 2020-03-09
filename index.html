@@ -1,0 +1,889 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <link rel="stylesheet" href="index.css">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Games Arena</title>
+</head>
+
+<body>
+    <!-- navbar starts -->
+    <nav class="navbar navbar-light bg-light" id="navbar">
+        <a class="navbar-brand" href="/">Cognizant <span class="ml-2 green-text">Games Arena</span></a>
+
+    </nav>
+    <main>
+        <div class="p-5">
+            <div class="container">
+                <!-- for search bar -->
+                <div class="row">
+                    <div class="col-sm-12 col-md-6 col-lg-8">
+                        <p class=" ">Search by name <i class="green-text fas fa-search"></i></p>
+                        <input placeholder="Search" class="search-input form-control" id="search-games">
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-2">
+                        <p class="muted py-2 mb-0 visibility-hidden"><i class="green-text fas fa-star ml-3"></i></p>
+                        <div class="dropdown ">
+                            <button class="btn rating dropdown-toggle" type="button" id="dropdownMenuButton"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Ratings 
+                            </button>
+                            <div class="dropdown-menu rating" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="#">High</a>
+                                <a class="dropdown-item" href="#">Medium</a>
+                                <a class="dropdown-item" href="#">Low</a>
+                                <a class="dropdown-item" href="#">All</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-2">
+                        <p class="muted py-2 mb-0 visibility-hidden"><i class="green-text fas fa-laptop ml-3"></i></p>
+                        <div class="dropdown platform">
+                            <button class="btn platform dropdown-toggle" type="button" id="dropdownMenuButton"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Platform 
+                            </button>
+                            <div class="dropdown-menu platform" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="#">Macintosh</a>
+                                <a class="dropdown-item" href="#">PC</a>
+                                <a class="dropdown-item" href="#">PlayStation 3</a>
+                                <a class="dropdown-item" href="#">iPhone</a>
+                                <a class="dropdown-item" href="#">PlayStation Vita</a>
+                                <a class="dropdown-item" href="#">Nintendo DS</a>
+                                <a class="dropdown-item" href="#">All</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- for cards -->
+                <div id="game-card-parent" class="py-5">
+
+                </div>
+                <!-- for pagination -->
+                <div class="row">
+
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- navbar ends -->
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function () {
+            const data = [
+                {
+                    "api_rate_limit": 50000
+                },
+                {
+                    "title": "LittleBigPlanet PS Vita",
+                    "platform": "PlayStation Vita",
+                    "score": 9.0,
+                    "genre": "Platformer",
+                    "editors_choice": "Y"
+                },
+                {
+                    "title": "LittleBigPlanet PS Vita -- Marvel Super Hero Edition",
+                    "platform": "PlayStation Vita",
+                    "score": 9.0,
+                    "genre": "Platformer",
+                    "editors_choice": "Y"
+                },
+                {
+                    "title": "Splice: Tree of Life",
+                    "platform": "iPad",
+                    "score": 8.5,
+                    "genre": "Puzzle",
+                    "editors_choice": "N"
+                },
+                {
+                    "title": "NHL 13",
+                    "platform": "Xbox 360",
+                    "score": 8.5,
+                    "genre": "Sports",
+                    "editors_choice": "N"
+                },
+                {
+                    "title": "NHL 13",
+                    "platform": "PlayStation 3",
+                    "score": 8.5,
+                    "genre": "Sports",
+                    "editors_choice": "N"
+                },
+                {
+                    "title": "Total War Battles: Shogun",
+                    "platform": "Macintosh",
+                    "score": 7.0,
+                    "genre": "Strategy",
+                    "editors_choice": "N"
+                },
+                {
+                    "title": "Double Dragon: Neon",
+                    "platform": "Xbox 360",
+                    "score": 3.0,
+                    "genre": "Fighting",
+                    "editors_choice": "N"
+                },
+                {
+                    "title": "Guild Wars 2",
+                    "platform": "PC",
+                    "score": 9.0,
+                    "genre": "RPG",
+                    "editors_choice": "Y"
+                },
+                {
+                    "title": "Double Dragon: Neon",
+                    "platform": "PlayStation 3",
+                    "score": 3.0,
+                    "genre": "Fighting",
+                    "editors_choice": "N"
+                },
+                {
+                    "title": "Total War Battles: Shogun",
+                    "platform": "PC",
+                    "score": 7.0,
+                    "genre": "Strategy",
+                    "editors_choice": "N"
+                },
+                {
+                    "title": "Tekken Tag Tournament 2",
+                    "platform": "PlayStation 3",
+                    "score": 7.5,
+                    "genre": "Fighting",
+                    "editors_choice": "N"
+                },
+                {
+                    "title": "Tekken Tag Tournament 2",
+                    "platform": "Xbox 360",
+                    "score": 7.5,
+                    "genre": "Fighting",
+                    "editors_choice": "N"
+                },
+                {
+                    "title": "Wild Blood",
+                    "platform": "iPhone",
+                    "score": 7.0,
+                    "genre": "",
+                    "editors_choice": "N"
+                },
+                {
+                    "title": "Mark of the Ninja",
+                    "platform": "Xbox 360",
+                    "score": 9.0,
+                    "genre": "Action, Adventure",
+                    "editors_choice": "Y"
+                },
+                {
+                    "title": "Mark of the Ninja",
+                    "platform": "PC",
+                    "score": 9.0,
+                    "genre": "Action, Adventure",
+                    "editors_choice": "Y"
+                },
+                {
+                    "title": "Home: A Unique Horror Adventure",
+                    "platform": "Macintosh",
+                    "score": 6.5,
+                    "genre": "Adventure",
+                    "editors_choice": "N"
+                },
+                {
+                    "title": "Home: A Unique Horror Adventure",
+                    "platform": "PC",
+                    "score": 6.5,
+                    "genre": "Adventure",
+                    "editors_choice": "N"
+                },
+                {
+                    "title": "Avengers Initiative",
+                    "platform": "iPhone",
+                    "score": 8.0,
+                    "genre": "Action",
+                    "editors_choice": "N"
+                },
+                {
+                    "title": "Way of the Samurai 4",
+                    "platform": "PlayStation 3",
+                    "score": 5.5,
+                    "genre": "Action, Adventure",
+                    "editors_choice": "N"
+                },
+                {
+                    "title": "JoJo's Bizarre Adventure HD",
+                    "platform": "Xbox 360",
+                    "score": 7.0,
+                    "genre": "Fighting",
+                    "editors_choice": "N"
+                },
+                {
+                    "title": "JoJo's Bizarre Adventure HD",
+                    "platform": "PlayStation 3",
+                    "score": 7.0,
+                    "genre": "Fighting",
+                    "editors_choice": "N"
+                },
+                {
+                    "title": "Mass Effect 3: Leviathan",
+                    "platform": "Xbox 360",
+                    "score": 7.5,
+                    "genre": "RPG",
+                    "editors_choice": "N"
+                },
+                {
+                    "title": "Mass Effect 3: Leviathan",
+                    "platform": "PlayStation 3",
+                    "score": 7.5,
+                    "genre": "RPG",
+                    "editors_choice": "N"
+                },
+                {
+                    "title": "Mass Effect 3: Leviathan",
+                    "platform": "PC",
+                    "score": 7.5,
+                    "genre": "RPG",
+                    "editors_choice": "N"
+                },
+                {
+                    "title": "Dark Souls (Prepare to Die Edition)",
+                    "platform": "PC",
+                    "score": 9.0,
+                    "genre": "Action, RPG",
+                    "editors_choice": "Y"
+                },
+                {
+                    "title": "Symphony",
+                    "platform": "PC",
+                    "score": 7.0,
+                    "genre": "Shooter",
+                    "editors_choice": "N"
+                },
+                {
+                    "title": "Bastion",
+                    "platform": "iPad",
+                    "score": 9.0,
+                    "genre": "Action, RPG",
+                    "editors_choice": "Y"
+                },
+                {
+                    "title": "Tom Clancy's Ghost Recon Phantoms",
+                    "platform": "PC",
+                    "score": 7.5,
+                    "genre": "Shooter",
+                    "editors_choice": "N"
+                },
+                {
+                    "title": "Thirty Flights of Loving",
+                    "platform": "PC",
+                    "score": 8.0,
+                    "genre": "Adventure",
+                    "editors_choice": "N"
+                },
+                {
+                    "title": "Legasista",
+                    "platform": "PlayStation 3",
+                    "score": 6.5,
+                    "genre": "Action, RPG",
+                    "editors_choice": "N"
+                },
+                {
+                    "title": "The Walking Dead: The Game -- Episode 3: Long Road Ahead",
+                    "platform": "Macintosh",
+                    "score": 9.0,
+                    "genre": "Adventure",
+                    "editors_choice": "Y"
+                },
+                {
+                    "title": "World of Warcraft: Mists of Pandaria",
+                    "platform": "PC",
+                    "score": 8.7,
+                    "genre": "RPG",
+                    "editors_choice": "Y"
+                },
+                {
+                    "title": "Hell Yeah! Wrath of the Dead Rabbit",
+                    "platform": "PlayStation 3",
+                    "score": 4.9,
+                    "genre": "Platformer",
+                    "editors_choice": "N"
+                },
+                {
+                    "title": "Pokemon White Version 2",
+                    "platform": "Nintendo DS",
+                    "score": 9.6,
+                    "genre": "RPG",
+                    "editors_choice": "Y"
+                },
+                {
+                    "title": "War of the Roses",
+                    "platform": "PC",
+                    "score": 7.3,
+                    "genre": "Action",
+                    "editors_choice": "N"
+                },
+                {
+                    "title": "Pokemon Black Version 2",
+                    "platform": "Nintendo DS",
+                    "score": 9.6,
+                    "genre": "RPG",
+                    "editors_choice": "Y"
+                },
+                {
+                    "title": "Drakerider",
+                    "platform": "iPhone",
+                    "score": 6.5,
+                    "genre": "RPG",
+                    "editors_choice": "N"
+                },
+                {
+                    "title": "The Walking Dead: The Game -- Episode 3: Long Road Ahead",
+                    "platform": "Xbox 360",
+                    "score": 9.0,
+                    "genre": "Adventure",
+                    "editors_choice": "Y"
+                },
+                {
+                    "title": "The Walking Dead: The Game -- Episode 3: Long Road Ahead",
+                    "platform": "PC",
+                    "score": 9.0,
+                    "genre": "Adventure",
+                    "editors_choice": "Y"
+                },
+                {
+                    "title": "The Walking Dead: The Game -- Episode 3: Long Road Ahead",
+                    "platform": "PlayStation 3",
+                    "score": 9.0,
+                    "genre": "Adventure",
+                    "editors_choice": "Y"
+                },
+                {
+                    "title": "Rock Band Blitz",
+                    "platform": "Xbox 360",
+                    "score": 8.5,
+                    "genre": "Music",
+                    "editors_choice": "Y"
+                },
+                {
+                    "title": "Counter-Strike: Global Offensive",
+                    "platform": "Macintosh",
+                    "score": 8.0,
+                    "genre": "Shooter",
+                    "editors_choice": "N"
+                },
+                {
+                    "title": "Worms Revolution",
+                    "platform": "PlayStation 3",
+                    "score": 8.5,
+                    "genre": "Strategy",
+                    "editors_choice": "N"
+                },
+                {
+                    "title": "Worms Revolution",
+                    "platform": "PC",
+                    "score": 8.5,
+                    "genre": "Strategy",
+                    "editors_choice": "N"
+                },
+                {
+                    "title": "Worms Revolution",
+                    "platform": "Xbox 360",
+                    "score": 8.5,
+                    "genre": "Strategy",
+                    "editors_choice": "N"
+                },
+                {
+                    "title": "Bad Piggies",
+                    "platform": "iPhone",
+                    "score": 9.2,
+                    "genre": "Action",
+                    "editors_choice": "Y"
+                },
+                {
+                    "title": "Resident Evil 6",
+                    "platform": "PlayStation 3",
+                    "score": 7.9,
+                    "genre": "Action, Adventure",
+                    "editors_choice": "N"
+                },
+                {
+                    "title": "Resident Evil 6",
+                    "platform": "Xbox 360",
+                    "score": 7.9,
+                    "genre": "Action, Adventure",
+                    "editors_choice": "N"
+                },
+                {
+                    "title": "Shad'O",
+                    "platform": "PC",
+                    "score": 7.0,
+                    "genre": "Adventure",
+                    "editors_choice": "N"
+                },
+                {
+                    "title": "Demon's Score",
+                    "platform": "iPhone",
+                    "score": 6.9,
+                    "genre": "Action",
+                    "editors_choice": "N"
+                },
+                {
+                    "title": "NBA 2K13",
+                    "platform": "Xbox 360",
+                    "score": 9.1,
+                    "genre": "Sports",
+                    "editors_choice": "Y"
+                },
+                {
+                    "title": "Counter-Strike: Global Offensive",
+                    "platform": "PC",
+                    "score": 8.0,
+                    "genre": "Shooter",
+                    "editors_choice": "N"
+                },
+                {
+                    "title": "The World Ends with You: Solo Remix",
+                    "platform": "iPad",
+                    "score": 9.5,
+                    "genre": "RPG",
+                    "editors_choice": "Y"
+                },
+                {
+                    "title": "Counter-Strike: Global Offensive",
+                    "platform": "PlayStation 3",
+                    "score": 8.0,
+                    "genre": "Shooter",
+                    "editors_choice": "N"
+                },
+                {
+                    "title": "The World Ends with You: Solo Remix",
+                    "platform": "iPhone",
+                    "score": 9.5,
+                    "genre": "RPG",
+                    "editors_choice": "Y"
+                },
+                {
+                    "title": "Counter-Strike: Global Offensive",
+                    "platform": "Xbox 360",
+                    "score": 8.0,
+                    "genre": "Shooter",
+                    "editors_choice": "N"
+                },
+                {
+                    "title": "Madden NFL 13",
+                    "platform": "PlayStation Vita",
+                    "score": 6.0,
+                    "genre": "Sports",
+                    "editors_choice": "N"
+                },
+                {
+                    "title": "Madden NFL 13",
+                    "platform": "PlayStation 3",
+                    "score": 9.0,
+                    "genre": "Sports",
+                    "editors_choice": "Y"
+                },
+                {
+                    "title": "Madden NFL 13",
+                    "platform": "Xbox 360",
+                    "score": 9.0,
+                    "genre": "Sports",
+                    "editors_choice": "Y"
+                },
+                {
+                    "title": "Hoodwink",
+                    "platform": "PC",
+                    "score": 2.5,
+                    "genre": "Adventure",
+                    "editors_choice": "N"
+                },
+                {
+                    "title": "NBA 2K13",
+                    "platform": "PlayStation 3",
+                    "score": 9.1,
+                    "genre": "Sports",
+                    "editors_choice": "Y"
+                },
+                {
+                    "title": "NBA 2K13",
+                    "platform": "PC",
+                    "score": 9.1,
+                    "genre": "Sports",
+                    "editors_choice": "Y"
+                },
+                {
+                    "title": "Lili: Child of Geos",
+                    "platform": "iPhone",
+                    "score": 7.0,
+                    "genre": "Adventure",
+                    "editors_choice": "N"
+                },
+                {
+                    "title": "Marvel vs. Capcom Origins",
+                    "platform": "Xbox 360",
+                    "score": 8.2,
+                    "genre": "Fighting",
+                    "editors_choice": "N"
+                },
+                {
+                    "title": "Marvel vs. Capcom Origins",
+                    "platform": "PlayStation 3",
+                    "score": 8.2,
+                    "genre": "Fighting",
+                    "editors_choice": "N"
+                },
+                {
+                    "title": "Dead or Alive 5",
+                    "platform": "PlayStation 3",
+                    "score": 8.8,
+                    "genre": "Fighting",
+                    "editors_choice": "N"
+                },
+                {
+                    "title": "Dead or Alive 5",
+                    "platform": "Xbox 360",
+                    "score": 8.8,
+                    "genre": "Fighting",
+                    "editors_choice": "N"
+                },
+                {
+                    "title": "Medal of Honor Warfighter",
+                    "platform": "PC",
+                    "score": 4.0,
+                    "genre": "Shooter",
+                    "editors_choice": "N"
+                },
+                {
+                    "title": "Professor Layton and the Miracle Mask",
+                    "platform": "Nintendo 3DS",
+                    "score": 8.7,
+                    "genre": "Adventure",
+                    "editors_choice": "Y"
+                },
+                {
+                    "title": "Hotline Miami",
+                    "platform": "PC",
+                    "score": 8.8,
+                    "genre": "Action",
+                    "editors_choice": "Y"
+                },
+                {
+                    "title": "Edna & Harvey: Harvey's New Eyes",
+                    "platform": "PC",
+                    "score": 6.0,
+                    "genre": "Adventure",
+                    "editors_choice": "N"
+                },
+                {
+                    "title": "Medal of Honor Warfighter",
+                    "platform": "PlayStation 3",
+                    "score": 4.0,
+                    "genre": "Shooter",
+                    "editors_choice": "N"
+                },
+                {
+                    "title": "Medal of Honor Warfighter",
+                    "platform": "Xbox 360",
+                    "score": 4.0,
+                    "genre": "Shooter",
+                    "editors_choice": "N"
+                },
+                {
+                    "title": "Transformers: Fall of Cybertron",
+                    "platform": "Xbox 360",
+                    "score": 8.5,
+                    "genre": "Shooter",
+                    "editors_choice": "N"
+                },
+                {
+                    "title": "Transformers: Fall of Cybertron",
+                    "platform": "PlayStation 3",
+                    "score": 8.5,
+                    "genre": "Shooter",
+                    "editors_choice": "N"
+                },
+                {
+                    "title": "Hero Academy",
+                    "platform": "PC",
+                    "score": 9.0,
+                    "genre": "Board",
+                    "editors_choice": "Y"
+                },
+                {
+                    "title": "Hero Academy",
+                    "platform": "iPhone",
+                    "score": 9.0,
+                    "genre": "Strategy",
+                    "editors_choice": "Y"
+                },
+                {
+                    "title": "Puzzle Craft",
+                    "platform": "iPhone",
+                    "score": 9.0,
+                    "genre": "Puzzle",
+                    "editors_choice": "Y"
+                },
+                {
+                    "title": "Realms Of Ancient War",
+                    "platform": "Xbox 360",
+                    "score": 5.5,
+                    "genre": "Action",
+                    "editors_choice": "N"
+                },
+                {
+                    "title": "Realms Of Ancient War",
+                    "platform": "PlayStation 3",
+                    "score": 5.5,
+                    "genre": "Action",
+                    "editors_choice": "N"
+                },
+                {
+                    "title": "Anomaly: Warzone Earth",
+                    "platform": "PlayStation 3",
+                    "score": 8.2,
+                    "genre": "Action",
+                    "editors_choice": "N"
+                },
+                {
+                    "title": "Darksiders II",
+                    "platform": "PC",
+                    "score": 7.5,
+                    "genre": "Action",
+                    "editors_choice": "N"
+                },
+                {
+                    "title": "Left 4 Dead 2: Cold Stream",
+                    "platform": "Macintosh",
+                    "score": 7.0,
+                    "genre": "Shooter",
+                    "editors_choice": "N"
+                },
+                {
+                    "title": "Left 4 Dead 2: Cold Stream",
+                    "platform": "PC",
+                    "score": 7.0,
+                    "genre": "Shooter",
+                    "editors_choice": "N"
+                },
+                {
+                    "title": "Puzzle Craft",
+                    "platform": "Android",
+                    "score": 9.0,
+                    "genre": "Puzzle",
+                    "editors_choice": "Y"
+                },
+                {
+                    "title": "Left 4 Dead 2: Cold Stream",
+                    "platform": "Xbox 360",
+                    "score": 7.0,
+                    "genre": "Shooter",
+                    "editors_choice": "N"
+                },
+                {
+                    "title": "Horn",
+                    "platform": "iPhone",
+                    "score": 9.0,
+                    "genre": "Action, Adventure",
+                    "editors_choice": "Y"
+                },
+                {
+                    "title": "Forza Horizon",
+                    "platform": "Xbox 360",
+                    "score": 9.0,
+                    "genre": "Racing",
+                    "editors_choice": "Y"
+                },
+                {
+                    "title": "FIFA Soccer 13",
+                    "platform": "PlayStation Vita",
+                    "score": 4.0,
+                    "genre": "Sports",
+                    "editors_choice": "N"
+                },
+                {
+                    "title": "Mugen Souls",
+                    "platform": "PlayStation 3",
+                    "score": 3.9,
+                    "genre": "Strategy, RPG",
+                    "editors_choice": "N"
+                },
+                {
+                    "title": "Crazy Taxi",
+                    "platform": "iPhone",
+                    "score": 7.1,
+                    "genre": "Racing, Action",
+                    "editors_choice": "N"
+                },
+                {
+                    "title": "New Little King's Story",
+                    "platform": "PlayStation Vita",
+                    "score": 5.8,
+                    "genre": "RPG",
+                    "editors_choice": "N"
+                },
+                {
+                    "title": "Fable: The Journey",
+                    "platform": "Xbox 360",
+                    "score": 7.2,
+                    "genre": "Action, RPG",
+                    "editors_choice": "N"
+                },
+                {
+                    "title": "The Lord of the Rings Online: Riders of Rohan",
+                    "platform": "PC",
+                    "score": 8.3,
+                    "genre": "RPG",
+                    "editors_choice": "N"
+                },
+                {
+                    "title": "Doom 3: BFG Edition",
+                    "platform": "Xbox 360",
+                    "score": 7.6,
+                    "genre": "RPG",
+                    "editors_choice": "N"
+                },
+                {
+                    "title": "Rugby League Live 2",
+                    "platform": "Xbox 360",
+                    "score": 6.0,
+                    "genre": "Sports",
+                    "editors_choice": "N"
+                },
+                {
+                    "title": "Rugby League Live 2",
+                    "platform": "PlayStation 3",
+                    "score": 6.0,
+                    "genre": "Sports",
+                    "editors_choice": "N"
+                },
+                {
+                    "title": "Doom 3: BFG Edition",
+                    "platform": "PlayStation 3",
+                    "score": 7.6,
+                    "genre": "RPG",
+                    "editors_choice": "N"
+                },
+                {
+                    "title": "Punch Quest",
+                    "platform": "iPhone",
+                    "score": 9.3,
+                    "genre": "Action",
+                    "editors_choice": "Y"
+                }
+            ]
+            function appendCard(data) {
+                console.log('hi ---- ', data);
+
+                $('#game-card-parent').html('');
+                let cardWrapper = "<div class='row'>";
+                for (let i = 0; i < data.length; i++) {
+                    if (data[i].title !== undefined) {
+                        let individualCard = `
+    <div class="col-lg-4 col-md-6 col-sm-12">
+        <div class="card  bg-light mb-3" style="max-width: 18rem;"">
+                
+            <div class="card-body">
+                <div class="flex space-between">
+                    <div>${data[i].title}</div>
+                <div>${data[i].editors_choice === "Y" ? '<i class="fas fa-star green-text"></i>' : '<div></div>'}</div>
+                </div>
+                <div class="muted">${data[i].platform}</div>
+            </div>
+            <div class="card-footer bg-transparent border-success flex space-between">
+                <div>Genre : ${data[i].genre}</div>
+                <div>${data[i].score}</div>    
+            </div>
+        </div>
+    </div>
+    `;
+                        cardWrapper = cardWrapper + individualCard;
+                    }
+
+                }
+
+                $('#game-card-parent').append(cardWrapper);
+            }
+            appendCard(data);
+            $(document).on('change keyup', '#search-games', function (e) {
+                const enteredText = e.target.value;
+                let filteredArr = [];
+
+                for (let i = 1; i < data.length; i++) {
+                    if (data[i].title.toLowerCase().indexOf(enteredText) > -1) {
+                        filteredArr.push(data[i]);
+                    }
+                }
+                appendCard(filteredArr);
+            });
+            $(function () {
+                $(".dropdown-menu.rating").on('click', ' a', function () {
+                    $(".btn.rating:first-child").text($(this).text());
+                    $(".btn.rating:first-child").val($(this).text());
+                    const option = $(this).text();
+                    let start, end;
+                    if (option === "High") {
+                        start = 7.5;
+                        end = 10;
+                    } else if (option === "Medium") {
+                        start = 5;
+                        end = 7.5;
+                    } else if (option === "Low") {
+                        start = 0;
+                        end = 5
+                    }else if(option==="All"){
+                        start = 0;
+                        end = 10;
+                    }
+                    let filteredArr = [];
+
+                    for (let i = 1; i < data.length; i++) {
+                        if (data[i].score>start && data[i].score<=end) {
+                            filteredArr.push(data[i]);
+                        }
+                    }
+                    appendCard(filteredArr);
+                });
+
+            });
+            $(function () {
+                $(".dropdown-menu.platform").on('click', ' a', function () {
+                    $(".btn.platform:first-child").text($(this).text());
+                    $(".btn.platform:first-child").val($(this).text());
+                    let option = $(this).text();
+                    console.log(option==="All");
+                    if(option==='All'){
+                        option="";
+                    }
+                    option = option.toLowerCase();
+                    let filteredArr = [];
+                    
+                    
+                    for (let i = 1; i < data.length; i++) {
+                    if (data[i].platform.toLowerCase().indexOf(option) > -1) {
+                        filteredArr.push(data[i]);
+                    }
+                }
+                appendCard(filteredArr);
+                });
+
+            });
+        });
+    </script>
+</body>
+
+</html>
